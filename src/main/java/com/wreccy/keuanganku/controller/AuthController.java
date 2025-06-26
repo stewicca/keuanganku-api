@@ -30,4 +30,13 @@ public class AuthController {
                 authService.login(request)
         );
     }
+
+    @PostMapping(path = "/refresh")
+    public ResponseEntity<?> refresh(@RequestHeader(name = HttpHeaders.AUTHORIZATION) String token) {
+        return ResponseUtil.buildResponse(
+                HttpStatus.OK,
+                "Token refreshed",
+                authService.refresh(token)
+        );
+    }
 }
