@@ -16,6 +16,9 @@ public class Budget {
     private String id;
 
     @Column(nullable = false)
+    private String name;
+
+    @Column(nullable = false)
     private int year;
 
     @Column(nullable = false)
@@ -26,6 +29,9 @@ public class Budget {
 
     @Column(name = "spent_amount", nullable = false)
     private int spentAmount;
+
+    @Column(nullable = false)
+    private float percentage;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

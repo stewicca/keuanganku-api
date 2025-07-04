@@ -8,4 +8,6 @@ public interface AuthService {
     AuthResponse login(AuthRequest request);
 
     AuthResponse refresh(String token);
+
+    UserResponse me();
 }

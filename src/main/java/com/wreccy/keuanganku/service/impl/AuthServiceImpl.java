@@ -82,4 +82,11 @@ public class AuthServiceImpl implements AuthService {
 
         return MapperUtil.toAuthResponse(jwtService.generateToken(user));
     }
+
+    @Override
+    public UserResponse me() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) authentication.getPrincipal();
+        return MapperUtil.toUserResponse(user);
+    }
 }

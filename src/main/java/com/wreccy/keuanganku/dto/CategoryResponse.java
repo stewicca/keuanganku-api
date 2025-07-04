@@ -7,12 +7,10 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserResponse {
+public class CategoryResponse {
     private String id;
 
-    private String username;
+    private String name;
 
-    private int monthly_salary;
-
-    private int region_umr;
+    private String label;
 }

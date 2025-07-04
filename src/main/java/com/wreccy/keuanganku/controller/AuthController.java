@@ -39,4 +39,13 @@ public class AuthController {
                 authService.refresh(token)
         );
     }
+
+    @GetMapping(path = "/me")
+    public ResponseEntity<?> me() {
+        return ResponseUtil.buildResponse(
+                HttpStatus.OK,
+                "User data retrieved successful",
+                authService.me()
+        );
+    }
 }
