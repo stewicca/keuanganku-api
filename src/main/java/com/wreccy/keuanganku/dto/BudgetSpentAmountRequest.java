@@ -1,26 +1,24 @@
 package com.wreccy.keuanganku.dto;
 
 import lombok.*;
+import jakarta.validation.constraints.*;
 
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BudgetResponse {
-    private String id;
-
+public class BudgetSpentAmountRequest {
+    @NotNull
+    @NotBlank
     private String name;
 
-    private String label;
-
+    @NotNull
     private Integer year;
 
+    @NotNull
     private Integer month;
 
-    private Integer budget_amount;
-
-    private Integer current_amount;
-
-    private Float percentage;
+    @NotNull
+    private Integer spentAmount;
 }

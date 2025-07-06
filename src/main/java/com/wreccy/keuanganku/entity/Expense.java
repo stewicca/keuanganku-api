@@ -18,7 +18,7 @@ public class Expense {
     private String id;
 
     @Column(nullable = false)
-    private int amount;
+    private Integer amount;
 
     @Column(columnDefinition = "TEXT")
     private String description;

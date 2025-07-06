@@ -27,10 +27,9 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public CategoryResponse getByName(CategoryRequest request) {
-        validationUtil.validate(request);
-
-        return MapperUtil.toCategoryResponse(categoryRepository.findByName(request.getName()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Category not found")));
+    public Category getByName(String name) {
+        return categoryRepository.findByName(name)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Category not found"));
     }
 
     @Override

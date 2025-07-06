@@ -26,10 +26,10 @@ public class User implements UserDetails {
     private String password;
 
     @Column(name = "monthly_salary")
-    private int monthlySalary;
+    private Integer monthlySalary;
 
     @Column(name = "region_umr")
-    private int regionUmr;
+    private Integer regionUmr;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Budget> budgets = new ArrayList<>();

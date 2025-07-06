@@ -1,13 +1,14 @@
 package com.wreccy.keuanganku.service;
 
 import com.wreccy.keuanganku.dto.*;
+import com.wreccy.keuanganku.entity.Category;
 
 import java.util.List;
 
 public interface CategoryService {
     List<CategoryResponse> getAll();
 
-    CategoryResponse getByName(CategoryRequest request);
+    Category getByName(String name);
 
     CategoryResponse create(CategoryRequest request);
 }

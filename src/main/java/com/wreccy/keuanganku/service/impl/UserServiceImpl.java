@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 import com.wreccy.keuanganku.service.UserService;
 import com.wreccy.keuanganku.repository.UserRepository;
 import org.springframework.security.core.userdetails.*;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.Optional;
 
@@ -39,6 +41,21 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
 
         return MapperUtil.toUserResponse(user);
+    }
+
+    @Override
+    public UserResponse updateMonthlySalary(UserMonthlySalaryRequest request) {
+        if (request.getMonthly_salary() == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "MonthlySalary can not be null");
+        }
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        User user = (User) authentication.getPrincipal();
+
+        user.setMonthlySalary(request.getMonthly_salary());
+
+        return MapperUtil.toUserResponse(userRepository.save(user));
     }
 
     @Override

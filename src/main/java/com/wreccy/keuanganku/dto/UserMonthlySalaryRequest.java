@@ -7,10 +7,6 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BodyResponse<T> {
-    private Integer status;
-
-    private String message;
-
-    private T data;
+public class UserMonthlySalaryRequest {
+    private Integer monthly_salary;
 }

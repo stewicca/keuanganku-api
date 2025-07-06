@@ -12,7 +12,7 @@ public class UserResponse {
 
     private String username;
 
-    private int monthly_salary;
+    private Integer monthly_salary;
 
-    private int region_umr;
+    private Integer region_umr;
 }

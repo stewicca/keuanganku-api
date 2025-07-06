@@ -8,4 +8,6 @@ public interface UserService extends UserDetailsService {
     User getOne(String id);
 
     UserResponse create(UserRequest request);
+
+    UserResponse updateMonthlySalary(UserMonthlySalaryRequest request);
 }

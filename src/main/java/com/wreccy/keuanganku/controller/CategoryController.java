@@ -22,19 +22,6 @@ public class CategoryController {
         );
     }
 
-    @GetMapping(path = "/{name}")
-    public ResponseEntity<?> getCategoryByName(@PathVariable String name) {
-        CategoryRequest request = CategoryRequest.builder()
-                .name(name)
-                .build();
-
-        return ResponseUtil.buildResponse(
-                HttpStatus.OK,
-                "Category retrieved successful",
-                categoryService.getByName(request)
-        );
-    }
-
     @PostMapping
     public ResponseEntity<?> createCategory(@RequestBody CategoryRequest request) {
         return ResponseUtil.buildResponse(

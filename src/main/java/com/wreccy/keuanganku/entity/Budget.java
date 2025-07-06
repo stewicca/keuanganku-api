@@ -19,19 +19,19 @@ public class Budget {
     private String name;
 
     @Column(nullable = false)
-    private int year;
+    private Integer year;
 
     @Column(nullable = false)
-    private int month;
+    private Integer month;
 
     @Column(name = "budget_amount", nullable = false)
-    private int budgetAmount;
+    private Integer budgetAmount;
 
     @Column(name = "spent_amount", nullable = false)
-    private int spentAmount;
+    private Integer spentAmount;
 
     @Column(nullable = false)
-    private float percentage;
+    private Float percentage;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

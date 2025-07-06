@@ -1,12 +1,11 @@
 package com.wreccy.keuanganku.specification;
 
+import com.wreccy.keuanganku.dto.*;
 import com.wreccy.keuanganku.entity.Budget;
 import jakarta.persistence.criteria.Predicate;
-import com.wreccy.keuanganku.dto.BudgetRequest;
 import org.springframework.data.jpa.domain.Specification;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class BudgetSpecification {
     public static Specification<Budget> getSpecification(BudgetRequest request) {
@@ -24,6 +23,20 @@ public class BudgetSpecification {
             if (predicates.isEmpty()) {
                 return criteriaBuilder.conjunction();
             }
+
+            return criteriaBuilder.and(predicates.toArray(new Predicate[]{}));
+        };
+    }
+
+    public static Specification<Budget> getSpentAmountSpecification(BudgetSpentAmountRequest request) {
+        return (root, query, criteriaBuilder) -> {
+            List<Predicate> predicates = new ArrayList<>();
+
+            predicates.add(criteriaBuilder.equal(root.get("name").as(String.class), request.getName()));
+
+            predicates.add(criteriaBuilder.equal(root.get("year").as(Integer.class), request.getYear()));
+
+            predicates.add(criteriaBuilder.equal(root.get("month").as(Integer.class), request.getMonth()));
 
             return criteriaBuilder.and(predicates.toArray(new Predicate[]{}));
         };

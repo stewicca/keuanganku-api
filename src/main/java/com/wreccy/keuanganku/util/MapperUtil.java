@@ -31,12 +31,22 @@ public class MapperUtil {
         return BudgetResponse.builder()
                 .id(budget.getId())
                 .name(budget.getName())
-                .label(budget.getName().substring(0, 1).toUpperCase() + budget.getName().substring(1))
+                .label(budget.getName().substring(0, 1).toUpperCase() + budget.getName().substring(1).toLowerCase())
                 .year(budget.getYear())
                 .month(budget.getMonth())
                 .budget_amount(budget.getBudgetAmount())
                 .current_amount(budget.getBudgetAmount() - budget.getSpentAmount())
                 .percentage(budget.getPercentage())
+                .build();
+    }
+
+    public static ExpenseResponse toExpenseResponse(Expense expense) {
+        return ExpenseResponse.builder()
+                .id(expense.getId())
+                .amount(expense.getAmount())
+                .description(expense.getDescription())
+                .date(expense.getExpenseDate())
+                .category(expense.getCategory().getName().substring(0, 1).toUpperCase() + expense.getCategory().getName().substring(1).toLowerCase())
                 .build();
     }
 }

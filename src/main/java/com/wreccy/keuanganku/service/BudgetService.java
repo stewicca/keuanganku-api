@@ -8,5 +8,7 @@ import java.util.List;
 public interface BudgetService {
     List<BudgetResponse> getAll(BudgetRequest request);
 
-    List<Budget> initialBudget(BudgetRequest request);
+    List<BudgetResponse> initialBudget(BudgetRequest request);
+
+    Budget addSpentAmount(BudgetSpentAmountRequest request);
 }
