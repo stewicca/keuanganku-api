@@ -27,7 +27,11 @@ public class BudgetServiceImpl implements BudgetService {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public List<BudgetResponse> getAll(BudgetRequest request) {
-        Specification<Budget> specification = BudgetSpecification.getSpecification(request);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        User user = (User) authentication.getPrincipal();
+
+        Specification<Budget> specification = BudgetSpecification.getAllSpecification(request, user);
         List<Budget> budgets = budgetRepository.findAll(specification);
 
         if (budgets.isEmpty()) {
