@@ -26,9 +26,11 @@ public class BudgetSpecification {
         };
     }
 
-    public static Specification<Budget> getSpentAmountSpecification(BudgetSpentAmountRequest request) {
+    public static Specification<Budget> getSpentAmountSpecification(BudgetSpentAmountRequest request, User user) {
         return (root, query, criteriaBuilder) -> {
             List<Predicate> predicates = new ArrayList<>();
+
+            predicates.add(criteriaBuilder.equal(root.get("user").as(String.class), user.getId()));
 
             predicates.add(criteriaBuilder.equal(root.get("name").as(String.class), request.getName()));
 

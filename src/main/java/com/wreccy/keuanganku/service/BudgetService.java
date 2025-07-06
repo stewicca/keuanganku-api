@@ -1,7 +1,7 @@
 package com.wreccy.keuanganku.service;
 
 import com.wreccy.keuanganku.dto.*;
-import com.wreccy.keuanganku.entity.Budget;
+import com.wreccy.keuanganku.entity.*;
 
 import java.util.List;
 
@@ -10,5 +10,5 @@ public interface BudgetService {
 
     List<BudgetResponse> initialBudget(BudgetRequest request);
 
-    Budget addSpentAmount(BudgetSpentAmountRequest request);
+    void addSpentAmount(BudgetSpentAmountRequest request, User user);
 }

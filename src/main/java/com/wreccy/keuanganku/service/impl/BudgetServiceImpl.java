@@ -90,10 +90,10 @@ public class BudgetServiceImpl implements BudgetService {
     }
 
     @Override
-    public Budget addSpentAmount(BudgetSpentAmountRequest request) {
+    public void addSpentAmount(BudgetSpentAmountRequest request, User user) {
         validationUtil.validate(request);
 
-        Specification<Budget> specification = BudgetSpecification.getSpentAmountSpecification(request);
+        Specification<Budget> specification = BudgetSpecification.getSpentAmountSpecification(request, user);
 
         Budget budget = budgetRepository.findOne(specification)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Budget not found"));
@@ -104,6 +104,6 @@ public class BudgetServiceImpl implements BudgetService {
 
         budget.setSpentAmount(budget.getSpentAmount() + request.getSpentAmount());
 
-        return budgetRepository.save(budget);
+        budgetRepository.save(budget);
     }
 }

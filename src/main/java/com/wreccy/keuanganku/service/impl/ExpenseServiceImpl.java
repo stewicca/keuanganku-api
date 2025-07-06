@@ -43,7 +43,7 @@ public class ExpenseServiceImpl implements ExpenseService {
 
         User user = (User) authentication.getPrincipal();
 
-        Category category = categoryService.getByName(request.getCategory());
+        Category category = categoryService.getByName(request.getCategory().toLowerCase());
 
         Expense expense = Expense.builder()
                 .amount(request.getAmount())
@@ -60,7 +60,7 @@ public class ExpenseServiceImpl implements ExpenseService {
                 .spentAmount(expense.getAmount())
                 .build();
 
-        budgetService.addSpentAmount(budgetSpentAmountRequest);
+        budgetService.addSpentAmount(budgetSpentAmountRequest, user);
 
         return MapperUtil.toExpenseResponse(expenseRepository.save(expense));
     }
