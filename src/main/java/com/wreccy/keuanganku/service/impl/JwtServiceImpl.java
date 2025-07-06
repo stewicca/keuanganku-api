@@ -43,6 +43,15 @@ public class JwtServiceImpl implements JwtService {
         }
     }
 
+    @Override
+    public DecodedJWT decodeToken(String token) {
+        try {
+            return JWT.decode(parseToken(token));
+        } catch (JWTDecodeException error) {
+            throw new RuntimeException(error.getMessage());
+        }
+    }
+
     private String parseToken(String token) {
         if (token != null && token.startsWith("Bearer")) return token.substring(7);
         return null;

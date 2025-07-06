@@ -70,7 +70,7 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public AuthResponse refresh(String token) {
-        DecodedJWT payload = jwtService.verifyToken(token);
+        DecodedJWT payload = jwtService.decodeToken(token);
 
         Instant refreshExp = payload.getClaim("rexp").asDate().toInstant();
 

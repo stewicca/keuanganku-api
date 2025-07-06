@@ -7,4 +7,6 @@ public interface JwtService {
     String generateToken(User user);
 
     DecodedJWT verifyToken(String token);
+
+    DecodedJWT decodeToken(String token);
 }
