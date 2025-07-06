@@ -45,7 +45,7 @@ public class MapperUtil {
                 .id(expense.getId())
                 .amount(expense.getAmount())
                 .description(expense.getDescription())
-                .date(expense.getExpenseDate())
+                .date(expense.getExpenseDate().toString())
                 .category(expense.getCategory().getName().substring(0, 1).toUpperCase() + expense.getCategory().getName().substring(1).toLowerCase())
                 .build();
     }

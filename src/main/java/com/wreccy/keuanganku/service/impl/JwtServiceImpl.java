@@ -21,7 +21,7 @@ public class JwtServiceImpl implements JwtService {
         try {
             return JWT.create()
                     .withSubject(user.getId())
-                    .withClaim("rexp", Instant.now().plus(3600, ChronoUnit.SECONDS))
+                    .withClaim("rexp", Instant.now().plus(300, ChronoUnit.SECONDS))
                     .withIssuedAt(Instant.now())
                     .withExpiresAt(Instant.now().plus(3600 * 24, ChronoUnit.SECONDS))
                     .withIssuer("KeuanganKu")

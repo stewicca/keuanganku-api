@@ -16,7 +16,7 @@ public class ExpenseResponse {
 
     private String description;
 
-    private LocalDate date;
+    private String date;
 
     private String category;
 }
