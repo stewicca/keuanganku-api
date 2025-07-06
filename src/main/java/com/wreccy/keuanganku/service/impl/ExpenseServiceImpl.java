@@ -25,7 +25,11 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     @Override
     public List<ExpenseResponse> getExpenses() {
-        List<Expense> expenses = expenseRepository.findAll();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        User user = (User) authentication.getPrincipal();
+
+        List<Expense> expenses = expenseRepository.findAllByUserId(user.getId());
 
         return expenses.stream().map(MapperUtil::toExpenseResponse).collect(Collectors.toList());
     }
